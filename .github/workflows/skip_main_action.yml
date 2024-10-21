@@ -1,0 +1,15 @@
+name: 禁用主分支上的Actions
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cancel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
